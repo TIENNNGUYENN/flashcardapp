@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body{
+    background : linear-gradient(to right,#ec6f66, #f3a183);
+    font-family: 'Roboto', sans-serif;
+}
+/* Contains result box, card box and menu box  */
+.home-box{
+    max-width: 1200px;
+    background-color:linear-gradient(to right,#ec6f66, #f3a183);
+    margin: 300px auto ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center ;
+}
+/* result box */
+.result-box{
+    display: none;
+}
+
+.show-result-box{
+    display: flex;
+    flex-direction: column;
+    background-color:pink;
+    padding: 50px 40px;
+    border-radius: 20px;
+}
+
+.result-box .result-text{
+    padding: 50px ;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: black;
+    position: relative;
+
+}
+/* card box contains question box, infor box, option box, decripton box and next-question button */
+.card-box{
+    width:400px;
+    background-color:pink;
+    padding: 100px 10px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.card-box .question-box{
+    background-color: #ffffff;
+    border-radius: 30px;
+    border: 2px solid black;
+    font-size: 30px;
+    text-align: center;
+    
+}
+.card-box .infor-box{
+    background-color: #ec6f66;
+    border-radius: 30px;
+    border: 2px solid black;
+    font-size: 30px;
+    text-align: center;
+       
+}
+
+.card-box .infor-box .infor-text{
+    padding: 50px ;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: black;
+    position: relative;
+    text-transform: uppercase;
+
+}
+
+.card-box .question-box .question-text{
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    color: black;
+    position: relative;
+    text-transform: uppercase;
+
+}
+.card-box .option-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+.card-box .option-box .option{
+    background-color: #ffffff;
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px);  
+    margin-top: 30px; 
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+    border: 2px solid black;
+    border-radius: 30px;
+    position: relative;
+}
+.card-box .option-box .option.show-correct{
+    background-color: seagreen;
+    border-color: black;
+    animation: pulse 1s linear;
+}
+.card-box .option-box .option.correct{
+    background-color: seagreen;
+    border-color: black;
+    animation: pulse 1s linear;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+  }
+.card-box .option-box .option.correct::before{
+    content: '';
+    position: absolute;   
+    height: 20px;
+    width: 20px;
+    right: 5px;
+    top: 5px;
+    background-image: url("img/correct.png");
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: fadeInRight .5s linear forwards;
+
+}
+.card-box .option-box .option.wrong{
+    background-color: red;
+    border-color: black;
+    animation: shake 1s linear;
+}
+.card-box .option-box .option.wrong::before{
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 5px;
+    top: 5px;
+    background-image: url("img/wrong.png");
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: fadeInRight .5s linear forwards;
+
+}
+@keyframes shake{
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+}
+@keyframes fadeInRight{
+    
+        0% {
+           opacity: 0;
+           transform: translateX(5px);
+        }
+        100% {
+           opacity: 1;
+           transform: translateX(0);
+        }
+     
+}
+
+.card-box .wrong-answer-description{
+    background-color: white;
+    border: 2px solid black;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 30px;
+    display: none;
+}
+.card-box .correct-answer-description{
+    background-color: white;
+    border: 2px solid black;
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 30px;
+    display: none;
+}
+.card-box .correct-answer-description.show{
+    display: block;
+    animation: fadeInRight 1s ease;
+
+}
+.card-box .wrong-answer-description.show{
+    display: block;
+    animation: fadeInRight 1s ease;
+
+}
+.card-box .next-question{
+    padding-top: 30px;
+    text-align: center;
+}
+
+/* menu box */
+
+.menu-box{
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-between;
+    background-color:pink;
+    padding: 50px 40px;
+    border-radius: 20px;
+}
+
+.btn{
+    background-color: blanchedalmond ;
+    border: 2px solid black;
+    padding: 15px 15px;
+    color: black ;
+    font-size: 15px;
+    border-radius: 30px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+/* flip card*/
+
+.flip-container {
+	perspective: 1000;
+}
+
+.flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+ 
+/* Kích thước các mặt */
+.flip-container, .front, .back {
+	width: 400px;
+	height: 200px;
+}
+ 
+/* flip speed  */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+ 
+	position: relative;
+}
+ 
+/*Ẩn các mặt sau (back face) khi hoán chuyển các mặt */
+.front, .back {
+	backface-visibility: hidden;
+ 
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+ 
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+ 
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
